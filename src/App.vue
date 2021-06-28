@@ -1,27 +1,32 @@
 <template>
   <div id="app">
-    <OrderBurger />
+    <div id="nav">
+      <router-link to="/">Order Burger</router-link> |
+      <router-link to="/orders">Orders</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 
-<script>
-import OrderBurger from './components/OrderBurger.vue'
-
-export default {
-  name: 'App',
-  components: {
-    OrderBurger
-  }
-}
-</script>
-
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

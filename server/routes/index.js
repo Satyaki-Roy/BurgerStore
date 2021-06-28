@@ -6,10 +6,17 @@ const { newOrderEntry, getOrdersByCustomer } = require("../db/orders");
 
 router.get('/customer', async function(req, res, next) {
   const name = req.query.name;
-  const { id:customerId } = await getCustomerId(name);
-  res.send({
-    customerId,
-  });
+  const databaseResponse = await getCustomerId(name);
+  if (databaseResponse) {
+    const {id:customerId} = databaseResponse;
+    res.send({
+      customerId,
+    });
+  } else {
+    res.status(404).send({
+      message: "Customer has not placed any order",
+    });
+  }
 });
 
 router.post('/customer', async function(req, res, next) {

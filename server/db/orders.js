@@ -7,7 +7,6 @@ const newOrderEntry = (options) => {
 };
 
 const getOrdersByCustomer = (customerId) => {
-  console.log(customerId);
   return dbConnection("orders")
     .select("*")
     .where({
